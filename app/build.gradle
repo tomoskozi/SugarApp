@@ -16,6 +16,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        productFlavors {
+            dev {
+                applicationId = "com.mtomoskozi.sugarapp.dev"
+                buildConfigField 'String', 'FLAVOUR', '"dev"'
+            }
+            full {
+                applicationId = "com.mtomoskozi.sugarapp.full"
+                buildConfigField 'String', 'FLAVOUR', '"full"'
+            }
+        }
     }
 }
 

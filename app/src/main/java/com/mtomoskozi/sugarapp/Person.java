@@ -10,7 +10,16 @@ import com.orm.SugarRecord;
 public class Person extends SugarRecord {
     String name;
 
+    public Person() {
+
+    }
+
     public Person(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
