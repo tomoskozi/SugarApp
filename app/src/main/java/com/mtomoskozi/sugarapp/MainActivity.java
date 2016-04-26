@@ -20,14 +20,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SugarContext.init(this);
-        Person.findById(Person.class, (long) 1);
 
-        if (BuildConfig.FLAVOUR == "dev") {
+        SugarContext.init(this);
+
+        if (BuildConfig.FLAVOR == "mock") {
             values = new LinkedList<>();
             values.add(new Person("Mama"));
             values.add(new Person("Papa"));
         }
+
         showList();
 
         findViewById(R.id.btnYes).setOnClickListener(new View.OnClickListener() {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void savePerson(Person p) {
-        if (BuildConfig.FLAVOUR == "dev") {
+        if (BuildConfig.FLAVOR == "mock") {
             values.add(p);
         }
         else {
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void showList() {
-        if (BuildConfig.FLAVOUR == "full") {
-             values = Person.listAll(Person.class);
+        if (BuildConfig.FLAVOR == "prod") {
+            values = Person.listAll(Person.class);
         }
         final ArrayList<Person> list = new ArrayList<Person>();
         for (int i = 0; i < values.size(); ++i) {

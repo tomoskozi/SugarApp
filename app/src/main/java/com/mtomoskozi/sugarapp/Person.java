@@ -11,7 +11,7 @@ public class Person extends SugarRecord {
     String name;
 
     public Person() {
-
+        name = "Default";
     }
 
     public Person(String name) {
@@ -20,6 +20,6 @@ public class Person extends SugarRecord {
 
     @Override
     public String toString() {
-        return this.name;
+        return name;
     }
 }
