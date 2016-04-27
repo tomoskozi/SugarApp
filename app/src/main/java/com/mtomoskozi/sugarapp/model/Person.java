@@ -1,4 +1,4 @@
-package com.mtomoskozi.sugarapp;
+package com.mtomoskozi.sugarapp.model;
 
 
 import com.orm.SugarRecord;

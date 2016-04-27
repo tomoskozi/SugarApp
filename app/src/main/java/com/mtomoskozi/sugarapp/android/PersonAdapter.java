@@ -1,7 +1,9 @@
-package com.mtomoskozi.sugarapp;
+package com.mtomoskozi.sugarapp.android;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
+
+import com.mtomoskozi.sugarapp.model.Person;
 
 import java.util.HashMap;
 import java.util.List;
