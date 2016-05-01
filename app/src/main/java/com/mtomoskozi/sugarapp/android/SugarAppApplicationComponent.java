@@ -22,5 +22,7 @@ public interface SugarAppApplicationComponent {
     void inject(MainPresenter mainPresenter);
 
     void inject(PeopleInteractor interactor);
+
+    void inject(SugarAppApplication app);
 }
 

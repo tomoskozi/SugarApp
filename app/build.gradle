@@ -23,7 +23,6 @@ android {
     productFlavors {
         mock {
             applicationId = "com.mtomoskozi.sugarapp.mock"
-            //buildConfigField 'String', 'FLAVOUR', '"dev"'
         }
 
         prod {
@@ -50,4 +49,10 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
     compile 'com.google.code.gson:gson:2.4'
+
+    //Robolectric
+    testCompile('org.robolectric:shadows-support-v4:3.0-rc3') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
 }

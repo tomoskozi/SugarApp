@@ -22,6 +22,9 @@ public class PeopleMock {
     static List<Person> peopleList = new ArrayList<>();
     static boolean isInitialised = false;
 
+    public static Person testP1 = new Person("Network Test 1");
+    public static Person testP2 = new Person("Network Test 2");
+
     public static Response process(Request request) {
         Uri uri = Uri.parse(request.url().toString());
 
@@ -31,8 +34,8 @@ public class PeopleMock {
 
         if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "people") && request.method().equals("GET")) {
             if (!isInitialised) {
-                peopleList.add(new Person("Network Test 1"));
-                peopleList.add(new Person("Network Test 2"));
+                peopleList.add(testP1);
+                peopleList.add(testP2);
                 isInitialised = true;
             }
             responseString = GsonHelper.getGson().toJson(peopleList);
@@ -50,5 +53,10 @@ public class PeopleMock {
         }
 
         return MockHelper.makeResponse(request, headers, responseCode, responseString);
+    }
+
+    public static void resetList() {
+        peopleList.clear();
+        isInitialised = false;
     }
 }

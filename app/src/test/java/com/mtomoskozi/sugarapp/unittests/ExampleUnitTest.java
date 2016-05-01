@@ -1,4 +1,6 @@
-package com.mtomoskozi.sugarapp;
+package com.mtomoskozi.sugarapp.unittests;
+
+import com.mtomoskozi.sugarapp.model.Person;
 
 import org.junit.Test;
 
@@ -11,5 +13,9 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+
+        String name = "lala";
+        Person p = new Person(name);
+        assertEquals(p.getName().equals(name), true);
     }
 }
