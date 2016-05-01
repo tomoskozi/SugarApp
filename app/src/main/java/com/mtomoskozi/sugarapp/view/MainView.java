@@ -10,4 +10,6 @@ import java.util.List;
 public interface MainView
 {
     void showPeople(List<Person> people);
+
+    void showMessage(String msg);
 }

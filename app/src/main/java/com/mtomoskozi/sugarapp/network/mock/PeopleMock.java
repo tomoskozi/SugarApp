@@ -1,0 +1,54 @@
+package com.mtomoskozi.sugarapp.network.mock;
+
+import android.net.Uri;
+
+import com.mtomoskozi.sugarapp.model.Person;
+import com.mtomoskozi.sugarapp.network.GsonHelper;
+import com.mtomoskozi.sugarapp.network.NetworkConfig;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import okhttp3.Headers;
+import okhttp3.Request;
+import okhttp3.Response;
+
+/**
+ * Created by Máté on 01/05/2016.
+ */
+public class PeopleMock {
+
+    static List<Person> peopleList = new ArrayList<>();
+    static boolean isInitialised = false;
+
+    public static Response process(Request request) {
+        Uri uri = Uri.parse(request.url().toString());
+
+        String responseString;
+        int responseCode;
+        Headers headers = request.headers();
+
+        if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "people") && request.method().equals("GET")) {
+            if (!isInitialised) {
+                peopleList.add(new Person("Network Test 1"));
+                peopleList.add(new Person("Network Test 2"));
+                isInitialised = true;
+            }
+            responseString = GsonHelper.getGson().toJson(peopleList);
+            responseCode = 200;
+        } else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "people/add") && request.method().equals("GET")) {
+            int startOfData = uri.getPath().lastIndexOf('/');
+            String name = uri.getPath().substring(startOfData + 1);
+            peopleList.add(new Person(name));
+
+            responseString = "";
+            responseCode = 200;
+        } else {
+            responseString = "ERROR";
+            responseCode = 503;
+        }
+
+        return MockHelper.makeResponse(request, headers, responseCode, responseString);
+    }
+}

@@ -10,7 +10,7 @@ import dagger.Provides;
 public class InteractorModule {
 
     @Provides
-    public PeopleDbInteractor providePeopleDbInteractor() {
-        return new PeopleDbInteractor();
+    public PeopleInteractor providePeopleDbInteractor() {
+        return new PeopleInteractor();
     }
 }

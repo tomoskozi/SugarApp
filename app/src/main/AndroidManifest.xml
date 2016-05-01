@@ -21,6 +21,9 @@
         <meta-data android:name="VERSION" android:value="3" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.mtomoskozi" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2487dd369041fc711de86f0952438f4a4d24cebb"/>
     </application>
 
 

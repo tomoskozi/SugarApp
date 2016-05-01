@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mtomoskozi.sugarapp.BuildConfig;
 import com.mtomoskozi.sugarapp.model.Person;
@@ -65,5 +66,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
         ((ListView) findViewById(R.id.listView)).setAdapter(
                 new PersonAdapter(getApplicationContext(), R.layout.list_item, list));
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
